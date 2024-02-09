@@ -1,0 +1,36 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+public class Mavenproject6 {
+
+    
+    public static void main(String[] args) {
+        
+Scanner s = new Scanner(System.in);
+Scanner scanner = new Scanner(System.in);
+        ArrayList<Integer> combinedArray = new ArrayList<>();
+
+        while (true) {
+            System.out.print("Enter the size of the new array: ");
+            int size = scanner.nextInt();
+            int[] newArray = new int[size];
+
+            for (int i = 0; i < size; i++) {
+                System.out.print("Enter element " + (i + 1) + ": ");
+                newArray[i] = scanner.nextInt();
+            }
+
+            for (int element : newArray) {
+                combinedArray.add(element);
+            }
+
+            System.out.print("Do you want to add another array? (yes/no): ");
+            String response = scanner.next().toLowerCase();
+            
+            if (!response.equals("yes")) {
+                break;
+            }
+        }
+        System.out.println("Combined array: " + combinedArray);
+        scanner.close();
+    }
+}
