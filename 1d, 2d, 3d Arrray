@@ -1,0 +1,134 @@
+import java.util.Arrays;
+import java.util.Scanner;
+public class Assignment {
+
+    public static void main(String[] args) {
+        
+        Scanner s = new Scanner(System.in);
+        String yrt;
+        try{     
+        do{
+        System.out.print("[1 for 1D], [2 for 2D] and [3 for 3D]\nEnter type of Array: ");
+        int choice = s.nextInt();
+        System.out.println();
+        switch(choice){
+            case 1:
+        Assignments();       
+                break;
+            case 2:
+        Assignments2();       
+                        break;             
+            case 3:
+        Assignments3();           
+                    break;
+                    
+            default:
+                System.out.println("Invalid input!\nPlease Select from the following:\n[1 for 1D], [2 for 2D] and [3 for 3D]");
+                
+        }
+        
+        
+        
+        System.out.println("\n\nPLEASE CHOOSE THE SMALL LETTER 'y' and 'n'\nDo you want to continue? y/n: ");
+       yrt = s.next();
+       
+    }while(!yrt.equals("n"));     
+    }catch(Exception e){
+        System.out.println("Goodbye!");
+        
+    }finally{
+            s.close();
+        }
+    }
+
+    
+    
+    
+    
+    
+    
+    
+ private static void print3DArray(int[][][] array) {
+        for (int k = 0; k < array.length; k++) {
+            System.out.println("side " + (k+1) + ":");
+            for (int i = 0; i < array[k].length; i++) {
+                for (int j = 0; j < array[k][i].length; j++) {
+                    System.out.print(array[k][i][j] + " ");
+                }
+                System.out.println();
+            }
+        }
+    }
+ private static void Assignments(){
+     Scanner s = new Scanner(System.in);
+  System.out.print("Enter the size of your Array: ");
+                int size = s.nextInt();
+                System.out.println();
+                int [] arr = new int [size];
+        
+                 for (int i = 0; i< arr.length ; i++){
+            
+             System.out.print("Enter an Element: ");
+             System.out.print("\n"+ (i+1) + "."+"Element: "); 
+             arr[i]=s.nextInt();
+             
+              System.out.println();
+        System.out.print("The elements are:  " + Arrays.toString(arr));
+        }
+}
+ private static void Assignments2(){
+     Scanner s = new Scanner(System.in);
+       System.out.print("Enter Number of Rows: ");
+                int row = s.nextInt();
+                
+                System.out.print("Enter Number of Columns: ");
+                int col = s.nextInt();
+                System.out.println();
+                int[][] num = new int [row][col];
+                
+                for(int i=0; i<col;i++){
+                    
+                }
+                for(int i=0; i<col;i++){
+                    for(int j=0; j<col;j++){
+                        System.out.print("Enter the Element of "+"["+ (i+1)+"] "+ "["+ (j+1)+"]"+": ");
+                        num [i][j]= s.nextInt();
+                        
+                    }
+                }
+                for(int i=0; i<col;i++){
+                
+                }
+                System.out.println();
+                System.out.println("The 2d Matrix is: ");
+                for(int i=0; i<row;i++){
+                    for(int j=0; j<col;j++){
+                        System.out.print(num[i][j] + " ");
+                    }
+                    System.out.println();
+                }
+ }
+  private static void Assignments3(){
+      Scanner s = new Scanner (System.in);
+       System.out.println("Enter the number of sides: ");
+        int sides = s.nextInt();
+        System.out.println("Enter the number of rows: ");
+        int rows = s.nextInt();
+        System.out.println("Enter the number of columns: ");
+        int columns = s.nextInt();
+        int[][][] array = new int[sides][rows][columns];
+
+        for (int k = 0; k < sides; k++) {
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < columns; j++) {
+                    System.out.println("Enter the Element of " + "[" + (i+1) + "},{" + (j+1) + "]:");
+                    array[k][i][j] = s.nextInt();
+                    
+                    System.out.println("3D Array created and populated:");
+        print3DArray(array);
+                }
+            }
+        }
+      
+  }
+}
