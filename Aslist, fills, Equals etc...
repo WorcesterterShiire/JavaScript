@@ -1,0 +1,276 @@
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Mavenproject9 {
+
+    public static void main(String[] args) {
+          Scanner s = new Scanner(System.in);
+          String yrt;
+          try{
+     do{
+          System.out.print("Enter the Method you want\n1. Aslist\n2. Fill\n3. Copy Of\n4. Equal\n5. Sort\n6. Binary Search");
+          
+          System.out.println("\nEnter you choice: ");
+          int choice = s.nextInt();
+          
+          switch(choice){
+              case 1:
+                  Aslist();
+                  break;
+              case 2:
+                  Fill();
+                  break;
+              case 3:
+                  CopyOf();
+                  break;
+              case 4:
+                  Equals();
+                  break;
+              case 5:
+                  Sort();
+                  break;
+              case 6:
+                  BinarySearch();
+                  break;
+                  
+              default:
+                  System.out.println("Invalid Input!!");
+                  System.out.println("");
+          }
+          System.out.println("\nDo you want to continue? y/n: ");
+       yrt = s.next();
+     }while(!yrt.equals("n"));
+}catch(Exception e){
+        System.out.println("Goodbye!");
+        
+    }finally{
+            s.close();
+        }
+          
+    }
+    private static void Aslist(){
+        Scanner s =new Scanner (System.in);
+        ArrayList<String> fruitlist = new ArrayList<>();
+        String yrt;
+try{
+     do{
+        System.out.print("Enter the initial size of the fruit list: ");
+        int initialSize = s.nextInt();
+        s.nextLine();
+        for (int i = 0; i < initialSize; i++) {
+            System.out.print("Enter fruit #" + (i + 1) + ": ");
+            String fruit = s.nextLine();
+            fruitlist.add(fruit);
+        }
+
+
+        boolean continueManaging = true;
+        while (continueManaging) {
+            System.out.println("\nOptions:");
+            System.out.println("1. Add more fruits");
+            System.out.println("2. Remove a fruit");
+            System.out.println("3. Clear");
+            System.out.println("4. Exit");
+            System.out.println("5. Get");
+            System.out.println("6. List Size");
+            System.out.println("7. Updated List");
+
+            System.out.print("Enter your choice: ");
+            int choice = s.nextInt();
+            
+            s.nextLine();
+         switch (choice) {
+                case 1:
+                    System.out.print("Enter the number of fruits to add: ");
+                    int numToAdd = s.nextInt();
+                    s.nextLine();
+                    for (int i = 0; i < numToAdd; i++) {
+                        System.out.print("Enter additional fruit #" + (i + 1) + ": ");
+                        String additionalFruit = s.nextLine();
+                        fruitlist.add(additionalFruit);
+                    }
+                    break;
+case 2:
+                    if (!fruitlist.isEmpty()) {
+                        System.out.print("Current fruit list: " + fruitlist);
+                        System.out.print("\nEnter the index of the fruit to remove: ");
+                        int indexToRemove = s.nextInt();
+                        s.nextLine();
+                        if (indexToRemove >= 0 && indexToRemove < fruitlist.size()) {
+                            String removedFruit = fruitlist.remove(indexToRemove);
+                            System.out.println(removedFruit + " removed from the list.");
+                        } else {
+                            System.out.println("Invalid index. No fruit removed.");
+                        }
+                    } else {
+                        System.out.println("The fruit list is empty. No fruit to remove.");
+                    }
+                    break;
+
+                case 3:
+                   
+                    fruitlist.clear();
+                      System.out.println("After clear: " + fruitlist);
+                      break;
+                case 4 :
+                    
+                     continueManaging = false;
+                    break;
+                case 5:
+                    int Index = (fruitlist.size() - 1);
+                    int indexToGet;
+                    System.out.print("Index Available: "+(fruitlist.size()-fruitlist.size())+ " To "+(fruitlist.size() -1));
+                    do{
+                    System.out.print("\nEnter the index of the fruit to get: ");
+                    indexToGet = s.nextInt();
+                    System.out.println("Invalid Index!");
+                    }while(indexToGet > Index);  
+                    System.out.print("Searched Item: ");
+                    System.out.println(fruitlist.get(indexToGet));
+                   
+                case 6:
+                    System.out.println("List size: "+fruitlist.size());
+                    break;
+                case 7:
+                    System.out.println("Updated List");
+                    for( String ss: fruitlist){
+                    System.out.println(ss + " " );      
+                    }
+                break;
+                default:
+                    System.out.println("\nInvalid Choice! ");
+                    break;
+            }
+        System.out.println("Final fruit list: " + fruitlist);
+
+       
+        
+    }
+         System.out.println("Do you want to continue? y/n: ");
+       yrt = s.next();
+     }while(!yrt.equals("n"));
+}catch(Exception e){
+        System.out.println("Goodbye!");
+        
+    }finally{
+            s.close();
+        }
+    }
+    private static void Fill(){
+        Scanner s =new Scanner (System.in);
+        System.out.print("Enter the number you want to fill: ");
+                    int Size =s.nextInt();
+                    System.out.println("Enter Size: ");
+                    int Size1 =s.nextInt();
+                    int [] array = new int [Size1];
+                    Arrays.fill(array, Size);
+                    for(Integer i: array){
+                    System.out.print( i + " ");}
+    }
+    private static void CopyOf(){
+        Scanner s =new Scanner (System.in);
+        ArrayList<String> Ilist = new ArrayList<>();
+        int Index;
+
+        System.out.print("Enter the initial size of the Array list: ");
+        int initialSize = s.nextInt();
+        s.nextLine();
+
+        for (int i = 0; i < initialSize; i++) {
+            System.out.print("Enter Element: ");
+            String fruit = s.nextLine();
+            Ilist.add(fruit);
+        }
+
+        while (true) {
+            System.out.println("Available Index: 0 To " + (Ilist.size() - 1));
+            System.out.print("Enter the index you want to put your number in: ");
+            Index = s.nextInt();
+
+            if (Index < 0 || Index >= Ilist.size()) {
+                System.out.println("Index is unavailable. Please enter a valid index.");
+            } else {
+                break;
+            }
+        }
+
+        System.out.print("Enter the number you want to put in the index: ");
+        String Index1 = s.next();
+
+        Ilist.set(Index, Index1);
+
+        System.out.println("Updated List:");
+        for (String ss : Ilist) {
+            System.out.println(ss + " ");
+        }
+    }
+
+    private static void Equals(){
+        Scanner s =new Scanner (System.in);
+         System.out.print("Enter the size of the initial array: ");
+                     int soize = s.nextInt();
+                      s.nextLine();
+                   int [] arr6 = new int [soize];
+                    for (int i = 0; i < soize; i++) {
+                        System.out.print("Enter Element #" + (i + 1) + ": ");
+                        arr6[i] = s.nextInt();
+                    }
+                   
+                    System.out.print("Enter the size of the 2nd array: ");
+                     int soze = s.nextInt();
+                      s.nextLine();
+                   int [] arr5 = new int [soize];
+                    for (int i = 0; i < soze; i++) {
+                        System.out.print("Enter Element #" + (i + 1) + ": ");
+                         arr5[i] = s.nextInt();
+                    }
+              System.out.print("The elements are:  " +"Array1 " + Arrays.toString(arr6) +"Array 2"+ Arrays.toString(arr5));
+                
+              System.out.print(Arrays.equals(arr6, arr5));
+    
+                System.out.println();
+    }
+    private static void Sort(){
+        Scanner s =new Scanner (System.in);
+        System.out.print("Enter the size of your Array: ");
+                int size4 = s.nextInt();
+                System.out.println();
+                int [] numbers = new int [size4];
+        
+                 for (int i = 0; i< size4 ; i++){
+            
+             System.out.print("Enter an Element: ");
+             System.out.print("\n"+ (i+1) + "."+"Element: "); 
+             numbers[i]=s.nextInt();
+                 }
+                 Arrays.sort(numbers);
+                 System.out.print( "Sorted Number:  ");
+                     for(int t : numbers){
+                         
+        System.out.print( t+ ", ");
+    }
+    }
+    private static void     BinarySearch(){
+         Scanner s =new Scanner (System.in);
+        System.out.print("Enter the size of your Array: ");
+                int size3 = s.nextInt();
+                System.out.println();
+                int [] arr = new int [size3];
+        
+                 for (int i = 0; i< size3 ; i++){
+            
+             System.out.print("Enter an Element: ");
+             System.out.print("\n"+ (i+1) + "."+"Element: "); 
+             arr[i]=s.nextInt();
+                 }
+              System.out.println();
+        System.out.println("The elements are:  " + Arrays.toString(arr));
+        System.out.print("Enter the number you want to search for: ");
+        int num = s.nextInt();
+        
+        int c = Arrays.binarySearch(arr,num);
+        System.out.println("The index number is: "+c);
+    }
+}
